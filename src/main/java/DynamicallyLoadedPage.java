@@ -1,7 +1,8 @@
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.visible;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Selenide.$;
 
 public class DynamicallyLoadedPage {
@@ -17,7 +18,8 @@ public class DynamicallyLoadedPage {
         startButton.click();
     }
 
-    public void checkText() {
-        text.shouldBe(visible);
+    public String checkText() {
+        text.shouldBe(appear, Duration.ofSeconds(10));
+        return text.getText();
     }
 }
